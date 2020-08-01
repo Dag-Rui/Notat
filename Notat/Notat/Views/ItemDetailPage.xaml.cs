@@ -50,7 +50,8 @@ namespace Notat.Views
             {
                 viewModel.addSection(new ImageSection()
                 {
-                    Header = "Test"
+                    Header = "Test",
+                    Text = "Bla bla"
                 });
             }
             else if (action.Equals("Text"))

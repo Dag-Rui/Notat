@@ -11,39 +11,47 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="textSectionTemplate" x:DataType="models:TextSection">
-                <StackLayout Padding="10">
-                    <Label Text="{Binding Header}" 
+                <ViewCell>
+                    <Grid>
+                        <Label Text="{Binding Header}" 
                                 d:Text="{Binding .}"
                                 LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
                                 FontSize="15" />
-                    <Label Text="{Binding Text}" 
+                        <Label Text="{Binding Text}" 
                                 d:Text="Item descripton"
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
                                 FontSize="13" />
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="onTextSectionClicked"/>
-                    </StackLayout.GestureRecognizers>
-                </StackLayout>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="onTextSectionClicked"/>
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </ViewCell>
             </DataTemplate>
             <DataTemplate x:Key="imageSectionTemplate" x:DataType="models:ImageSection">
-                <StackLayout Padding="10">
-                    <Label Text="{Binding Header}" 
+                <ViewCell>
+                    <Grid>
+                        <Label Text="{Binding Header}" 
                                 d:Text="{Binding .}"
                                 LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
                                 FontSize="15" />
-                    <Image Source="{Binding Image}"/>
-                    <Label Text="{Binding Text}" 
+                        <Image Source="{Binding Image}"/>
+                        <Label Text="{Binding Text}" 
                                 d:Text="Item descripton"
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
                                 FontSize="13" />
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="onImageSectionClicked"/>
-                    </StackLayout.GestureRecognizers>
-                </StackLayout>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="onImageSectionClicked"/>
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                    <ViewCell.ContextActions>
+                        <MenuItem Text="Delete"/>
+                        <MenuItem Text="Edit"/>
+                    </ViewCell.ContextActions>
+                </ViewCell>
             </DataTemplate>
             <models:SectionDataTemplateSelector x:Key="sectionDataTemplateSelector"
                 textSectionTemplate="{StaticResource textSectionTemplate}"
@@ -63,11 +71,11 @@
                                 LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
                                 FontSize="13" />
-            <CollectionView ItemsSource="{Binding sections}" 
+            <ListView ItemsSource="{Binding sections}" 
                             ItemTemplate="{StaticResource sectionDataTemplateSelector}"/>
             <Button Text="Add" Clicked="addSectionClicked"/>
 
         </StackLayout>
     </RefreshView>
-    
+
 </ContentPage>

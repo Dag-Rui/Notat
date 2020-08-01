@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -21,17 +21,22 @@ namespace Notat.Droid.Services
             return false;
         }
 
-        public void pickDirectory()
-        {
-            throw new NotImplementedException();
-        }
-
         public string getDirectory()
         {
             return Android.OS.Environment.DataDirectory.AbsolutePath;
         }
 
         public void saveFileAsync(string subPath, string data)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<string> IFileService.pickDirectory()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<string>> getFilesAsync(string subPath)
         {
             throw new NotImplementedException();
         }

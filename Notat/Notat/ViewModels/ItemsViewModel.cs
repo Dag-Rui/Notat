@@ -10,8 +10,6 @@ namespace Notat.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
-
-        
         public ObservableCollection<Item> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
